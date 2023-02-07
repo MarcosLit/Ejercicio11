@@ -13,6 +13,7 @@ class Mercader : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
         var cambio = Intent(this, Mercader::class.java)
 
         binding.comerciar.setOnClickListener(){

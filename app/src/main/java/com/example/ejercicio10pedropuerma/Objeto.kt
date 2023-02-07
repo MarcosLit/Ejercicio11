@@ -3,6 +3,7 @@ package com.example.ejercicio10pedropuerma
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.ejercicio10pedropuerma.databinding.ActivityObjetoBinding
 
 class Objeto : AppCompatActivity() {
@@ -15,8 +16,16 @@ class Objeto : AppCompatActivity() {
         var cambio: Intent
 
         binding.recoger.setOnClickListener(){
-            cambio = Intent(this, PaginaBlanco::class.java)
-            startActivity(cambio)
+            if ((personaje1.mochila.getPesoMochila() - articulo.getPeso()) > 0){
+                personaje1.mochila.setPesoMochila(personaje1.mochila.getPesoMochila() - articulo.getPeso())
+                personaje1.mochila.interior.add(articulo)
+                println("Objeto introducido")
+                println("Peso de la mochila cambiado")
+                cambio = Intent(this, PaginaBlanco::class.java)
+                startActivity(cambio)
+            }else{
+                Toast.makeText(this, "La mochila estas llena, por favor contacta con el mercader", Toast.LENGTH_LONG).show()
+            }
         }
 
         binding.continuarRecoger.setOnClickListener(){

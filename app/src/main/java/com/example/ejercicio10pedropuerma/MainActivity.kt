@@ -13,9 +13,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        println(personaje1.nombre)
-
-
 
 
         binding.imageButton.setOnClickListener(){
